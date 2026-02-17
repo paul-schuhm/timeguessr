@@ -59,8 +59,7 @@ Lancer le site web, avec le serveur intégré de PHP :
 php -S localhost:8000 -t public
 ~~~
 
-Se rendre à l'URL http://localhost:8000 avec votre navigateur favori.
-
+Se rendre à l'URL <http://localhost:8000> avec votre navigateur favori.
 
 ### Jeu de données test
 
@@ -87,8 +86,7 @@ Se rendre à l'URL http://localhost:8000 avec votre navigateur favori.
 | Libellé                                                   | code   | Type | Commentaire/Contrainte                                                                                                                                       |
 | --------------------------------------------------------- | ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Nom de l'image dont il faut deviner année et localisation | `path` | AN   | **Unique**. Chaîne de caractères écrite en *kebab-case*. Comprend l'extension du fichier. Par ex `chute-du-mur.png`. Formats acceptés : png, jpeg, jpg, webp |
-|                                                           |        |      |                                                                                                                                                              |
-|                                                           |        |      |                                                                                                                                                              |
+
 *Légende* :
 
 - AN : AlphaNumérique ;
@@ -103,7 +101,6 @@ Se rendre à l'URL http://localhost:8000 avec votre navigateur favori.
 - **Fixer le cas de la navigation vers l'arrière**. Le site *casse* si on utilise le bouton *revenir en arrière* (*Back*) du navigateur. Avec le bouton *Back*, la session *continue* d'aller vers le round suivant ;
 - Mettre en place une véritable **gestion d'erreurs** ;
 - **Refactoriser/restructurer le code**. Le code est volontairement laissé *en l'état*. Essayer de **trouver des abstractions utiles** (fonctions, namespaces, classes si POO, PHP moderne avec Composer, classe *oriented* et *autoloading* etc.) pour *restructurer* le code.
-
 
 ### Fait
 
