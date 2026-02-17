@@ -24,4 +24,4 @@
 
 </html>
 
-Score final :
+Score final : <?php echo $score; ?>
