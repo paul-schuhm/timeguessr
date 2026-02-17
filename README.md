@@ -29,7 +29,7 @@
 
 ## Démos
 
-[Accéder a des démos](./demos/) sur des apsetcs spécifiques du projet et implémentation en PHP.
+[Accéder a des démos](./demos/) sur des aspects spécifiques (et clefs !) du projet et détails d'implémentation en PHP.
 
 
 ## Lancer le projet en local
@@ -37,7 +37,7 @@
 ### Dépendances
 
 - PHP 8+ et le module `pdo_mysql`;
-- Un serveur MySQL.
+- Un serveur MySQL avec un utilisateur ;
 
 ### Base de données
 

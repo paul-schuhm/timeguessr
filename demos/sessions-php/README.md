@@ -17,7 +17,7 @@ Un *third-party cookie* est un cookie déposé par un nom de domaine sans que vo
 
 ### Exemple concret
 
-Situation de départ : vous vous rendez sur le site `chaussures.com`. Ce site a un contrat avec une régie publicitaire hébergée sur `pub.net`.
+Situation de départ : vous vous rendez sur le site `chaussures.com`. Ce site a un contrat avec une régie publicitaire hébergée sur `.
 
 1. Vous vous rendez sur une page produit de chaussures.com. Dans le HTML, il y a des instructions pour aller chercher des données auprès de `pub.net`. Par exemple, une image :
 
