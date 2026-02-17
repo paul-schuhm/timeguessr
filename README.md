@@ -3,8 +3,8 @@
 - [Projet : TimeGuessr](#projet--timeguessr)
   - [Guide](#guide)
   - [Démos](#démos)
+  - [Lancer le projet en local](#lancer-le-projet-en-local)
     - [Dépendances](#dépendances)
-  - [Lancer le projet](#lancer-le-projet)
     - [Base de données](#base-de-données)
     - [Le site web](#le-site-web)
     - [Jeu de données test](#jeu-de-données-test)
@@ -31,12 +31,13 @@
 
 [Accéder a des démos](./demos/) sur des apsetcs spécifiques du projet et implémentation en PHP.
 
+
+## Lancer le projet en local
+
 ### Dépendances
 
 - PHP 8+ et le module `pdo_mysql`;
 - Un serveur MySQL.
-
-## Lancer le projet
 
 ### Base de données
 
