@@ -36,11 +36,31 @@ function controller_home( $args ) {
 }
 
 
+function compute_score_round(): int {
+	// Récupérer les données dans $_POST
+	// Récupérer les données de l'image courante
+	// $image = $_SESSION['game']['round_image'];
+
+	// Calculer le score (à spécifier).
+	// return compute_score($guess_year, $guess_lat, $guess_lon, $year, $lat, $lon);
+	return 100;
+}
+
+
+// A specifier
+function compute_score( $guess_year, $guess_lat, $guess_lon, $year, $lat, $lon ): int {
+	return 100;
+}
+
+
 function controller_show_round_result( $args ) {
+
 	$current_round = $_SESSION['game']['round'];
 
+	$score = compute_score_round();
+
 	// Calculer le score
-	++$_SESSION['game']['score'];
+	$_SESSION['game']['score'] += $score;
 
 	// Avancer au prochain round
 	++$_SESSION['game']['round'];
@@ -52,7 +72,7 @@ function controller_show_round_result( $args ) {
 			'current_round'  => $current_round,
 			'next_round_url' => $next_round_url,
 			'game_over_url'  => 'game-over',
-			'round_score'    => $_SESSION['game']['score'],
+			'round_score'    => $score,
 		)
 	);
 }
@@ -117,7 +137,7 @@ function controller_round_image() {
 
 	if ( ! file_exists( $file_path ) ) {
 		http_response_code( 404 );
-        trigger_error("Impossible de trouver le fichier image", E_ERROR);
+		trigger_error( 'Impossible de trouver le fichier image', E_ERROR );
 		exit;
 	}
 
@@ -142,9 +162,21 @@ function controller_game_over() {
 	$_SESSION = array();
 	// Supprimer sessions
 	session_destroy();
-	// Supprimer le cookie de session (laissé en exercice)
-	// Afficher page de fin de jeu (score final)
+	// Supprimer le cookie de session
+	if ( ini_get( 'session.use_cookies' ) ) {
+		$params = session_get_cookie_params();
+		setcookie(
+			session_name(),    // nom du cookie de session
+			'',                // valeur vide
+			time() - 3600,     // date passée provoque la suppression
+			$params['path'],
+			$params['domain'] ?? '',
+			$params['secure'] ?? false,
+			$params['httponly'] ?? false
+		);
+	}
 
+	// Afficher page de fin de jeu (score final)
 	display_template(
 		'game-over.php',
 		array(

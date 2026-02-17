@@ -12,6 +12,16 @@ declare(strict_types=1);
 // Connexion Base de données (object $pdo)
 require __DIR__ . '/../src/database.php';
 
+session_set_cookie_params(
+	array(
+		'lifetime' => 0,       // expire à la fermeture du navigateur
+		'path'     => '/',
+		'secure'   => true,    // si HTTPS
+		'httponly' => true,    // pas accessible via JS
+	)
+);
+
+
 session_start();
 
 // Charge et execute le routeur
