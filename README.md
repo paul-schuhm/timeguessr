@@ -2,6 +2,7 @@
 
 - [Projet : TimeGuessr](#projet--timeguessr)
   - [Guide](#guide)
+  - [Démos](#démos)
     - [Dépendances](#dépendances)
   - [Lancer le projet](#lancer-le-projet)
     - [Base de données](#base-de-données)
@@ -25,6 +26,10 @@
 3. **Implémentation** :
    1. Implémenter un composant *routeur* (URL associée à du code à executer (*controller*)) ;
    2. Implémenter une **boucle complète de jeu** (*navigation*)
+
+## Démos
+
+[Accéder a des démos](./demos/) sur des apsetcs spécifiques du projet et implémentation en PHP.
 
 ### Dépendances
 
