@@ -8,10 +8,13 @@
 </head>
 
 <body>
-    <h2>Score round <?php echo "X"; ?></h2>
+    <h2>Score round : <?php echo $args['round_score']; ?></h2>
     <p>
-        <a href="<?php echo $args['next_round_url'] ?>">Image suivante</a>
-
+        <?php if ($args['current_round'] == 5) : ?>
+            <a href="<?php echo $args['game_over_url'] ?>">Voir score final</a>
+        <?php else: ?>
+            <a href="<?php echo $args['next_round_url'] ?>">Image suivante</a>
+        <?php endif; ?>
     </p>
 </body>
 

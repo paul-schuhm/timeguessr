@@ -17,11 +17,10 @@
 
 <body>
     <h1>Score</h1>
+    <h2><?php echo $args['score']; ?></h2>
     <p>
-        <a href="/">Nouvelle partie</a>
+        <a href="/new-game">Rejouer</a>
     </p>
 </body>
 
 </html>
-
-Score final : <?php echo $score; ?>

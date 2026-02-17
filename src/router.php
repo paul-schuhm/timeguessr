@@ -4,18 +4,26 @@
  * Le composant router de l'application web.
  */
 
+
+/*Les Contrôleurs de l'application, executés par le routeur*/
+require_once __DIR__ . '/../src/controller.php';
+
+
 /**
  * Routes de l'application
  */
 define('ROUTES', [
     'POST' => [
-        '/round' => 'controller_round',
-        '/round-result' => 'controller_round_result',
-        '/game-over' => 'controller_game_over',
+        '/round' => 'controller_new_round',
+        '/round-result' => 'controller_show_round_result',
+
     ],
     'GET' => [
+        '/' => 'controller_home',
         '/new-game' => 'controller_new_game',
-        '/round' => 'controller_round',
+        '/round' => 'controller_new_round',
+        '/game-over' => 'controller_game_over',
+        '/round-image' => 'controller_round_image'
     ]
 ]);
 
@@ -31,12 +39,14 @@ if ($is_route) {
     $callable = ROUTES[$http_method][$resource];
 
     if (is_callable($callable)) {
-        call_user_func($callable, $args);
+        call_user_func($callable, $args, $http_method);
     } else {
         /*Contrôler n'existe pas ou mal défini: 500*/
-        trigger_error('Controler non callable. Erreur 500', E_USER_WARNING);
+        trigger_error("Controller $callable non callable. Erreur 500", E_USER_WARNING);
+        http_response_code(500);
     }
 } else {
     /*Ressource n'existe pas : 404*/
-    trigger_error('Ressource n\'existe pas. Erreur 404', E_USER_WARNING);
+    trigger_error("Ressource $http_method $resource n\'existe pas. Erreur 404", E_USER_WARNING);
+    http_response_code(404);
 }
