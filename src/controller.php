@@ -3,7 +3,7 @@
 /**
  * Affiche la page d'accueil du jeu.
  */
-function controller_home(): void
+function controller_show_home(): void
 {
 	display_template(
 		'home.php',
@@ -133,13 +133,13 @@ function controller_round_image(): void
  * Affiche l'écran de fin de partie avec le score final.
  * GET /game-over
  */
-function controller_game_over(): void
+function controller_end_game(): void
 {
 
 	// Récupérer le score
 	$score    = $_SESSION['game']['score'];
 	$_SESSION = array();
-	// Supprimer sessions
+	// Supprimer la session
 	session_destroy();
 	// Supprimer le cookie de session
 	if (ini_get('session.use_cookies')) {

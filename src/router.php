@@ -4,10 +4,8 @@
  * Le composant router de l'application web.
  */
 
-
 /*Les Contrôleurs de l'application, executés par le routeur*/
 require_once __DIR__ . '/../src/controller.php';
-
 
 /**
  * Routes de l'application
@@ -16,14 +14,13 @@ define('ROUTES', [
     'POST' => [
         '/round' => 'controller_play_round',
         '/round-result' => 'controller_show_round_result',
-
     ],
     'GET' => [
-        '/' => 'controller_home',
+        '/' => 'controller_show_home',
         '/new-game' => 'controller_new_game',
         '/round' => 'controller_play_round',
-        '/game-over' => 'controller_game_over',
-        '/round-image' => 'controller_round_image'
+        '/round-image' => 'controller_round_image',
+        '/game-over' => 'controller_end_game',
     ]
 ]);
 
