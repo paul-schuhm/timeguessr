@@ -1,0 +1,16 @@
+html{
+    width: 80%;
+    margin: auto;
+}
+
+footer{
+    margin-top: 64px;
+    font-size: 11pt;
+    background: grey;
+    padding: 12px;
+}
+
+h1{
+    background: gainsboro;
+    padding: 12px;
+}

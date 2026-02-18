@@ -6,22 +6,12 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
+<?php require 'parts/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIMEGUESSR</title>
-</head>
+<h1>TimeGuessr</h1>
 
-<body>
+<form action="/new-game" method="get">
+    <input type="submit" name="new_game" value="Nouvelle partie">
+</form>
 
-    <h1>TimeGuessr</h1>
-
-    <form action="/new-game" method="get">
-        <input type="submit" name="new_game" value="Nouvelle partie">
-    </form>
-</body>
-
-</html>
+<?php require 'parts/footer.php'; ?>

@@ -14,14 +14,14 @@ require_once __DIR__ . '/../src/controller.php';
  */
 define('ROUTES', [
     'POST' => [
-        '/round' => 'controller_new_round',
+        '/round' => 'controller_play_round',
         '/round-result' => 'controller_show_round_result',
 
     ],
     'GET' => [
         '/' => 'controller_home',
         '/new-game' => 'controller_new_game',
-        '/round' => 'controller_new_round',
+        '/round' => 'controller_play_round',
         '/game-over' => 'controller_game_over',
         '/round-image' => 'controller_round_image'
     ]

@@ -1,71 +1,36 @@
 <?php
 
 /**
- * Charge et retourne le rendu d'un template HTML
- *
- * @param string $name Le nom du template (ex. "home.php").
- * @param array  $args Les arguments à passer au template sous forme de tableau associatif.
- *
- * @return string Le contenu HTML généré par le template.
+ * Affiche la page d'accueil du jeu.
  */
-function render_template( string $name, array $args = array() ): string {
-	ob_start();
-	// Path Relatif au script appelant (le fichier controller.php ici)
-	require __DIR__ . "/views/{$name}";
-	return ob_get_clean();
-}
-
-/**
- * Charge, génère et affiche le rendu d'un template HTML, puis arrête le script.
- *
- * @param string $name Le nom du template (ex. "home.php").
- * @param array  $args Les arguments à passer au template sous forme de tableau associatif.
- *
- * @return void Cette fonction ne retourne rien, elle affiche directement le contenu.
- */
-function display_template( string $name, array $args = array() ): void {
-	echo render_template( $name, $args );
-	exit;
-}
-
-function controller_home( $args ) {
+function controller_home(): void
+{
 	display_template(
 		'home.php',
 		array()
 	);
 }
 
-
-function compute_score_round(): int {
-	// Récupérer les données dans $_POST
-	// Récupérer les données de l'image courante
-	// $image = $_SESSION['game']['round_image'];
-
-	// Calculer le score (à spécifier).
-	// return compute_score($guess_year, $guess_lat, $guess_lon, $year, $lat, $lon);
-	return 100;
-}
-
-
-// A specifier
-function compute_score( $guess_year, $guess_lat, $guess_lon, $year, $lat, $lon ): int {
-	return 100;
-}
-
-
-function controller_show_round_result( $args ) {
+/**
+ * Affiche le résultat du dernier round joué et le moyen de jouer le round suivant.
+ */
+function controller_show_round_result(): void
+{
 
 	$current_round = $_SESSION['game']['round'];
 
-	$score = compute_score_round();
+	//A implémenter.
+	// $score = compute_score_round();
+	$score = 100;
 
-	// Calculer le score
+	// Calculer le nouveau score
 	$_SESSION['game']['score'] += $score;
 
 	// Avancer au prochain round
 	++$_SESSION['game']['round'];
 
-	$next_round_url = sprintf( 'round?step=%d', $_SESSION['game']['round'] );
+	$next_round_url = sprintf('round?step=%d', $_SESSION['game']['round']);
+
 	display_template(
 		'round-result.php',
 		array(
@@ -78,22 +43,22 @@ function controller_show_round_result( $args ) {
 }
 
 /**
+ * Affiche le round à jouer. Chaque round prend une image dans la sélection.
  * GET /round
  *
- * @param [type] $args
- * @param [type] $http_method
  * @return void
  */
-function controller_new_round( $args, $http_method ) {
+function controller_play_round()
+{
 
 	$current_round = $_SESSION['game']['round'];
 
-	if ( $current_round > 5 ) {
-		header( 'Location: game-over' );
+	if ($current_round > 5) {
+		header('Location: game-over');
 		exit;
 	}
 
-	$image                           = array_shift( $_SESSION['game']['images'] );
+	$image                           = array_shift($_SESSION['game']['images']);
 	$_SESSION['game']['round_image'] = $image;
 
 	display_template(
@@ -107,12 +72,15 @@ function controller_new_round( $args, $http_method ) {
 }
 
 /**
+ * 
+ * Démarre une nouvelle partie. Initialise l'état du jeu en session.
  * POST /new-game
  *
- * @param [type] $args
+ * @param array $args
  * @return void
  */
-function controller_new_game( $args ) {
+function controller_new_game(array $args): void
+{
 	// Reset session
 	$_SESSION['game'] = array(
 		'round'   => 1,
@@ -125,37 +93,48 @@ function controller_new_game( $args ) {
 	$_SESSION['game']['images'] = $images;
 
 	// Redirect to first round.
-	header( 'Location: round?step=1' );
+	header('Location: round?step=1');
 	exit;
 }
 
 
-function controller_round_image() {
+/**
+ * Retourne une image parmi les images sélectionnées pour la partie.
+ * @return void
+ */
+function controller_round_image(): void
+{
 
 	// Cherche l'image sur le disque (repertoire privé)
-	$file_path = __DIR__ . '/../images/' . basename( $_SESSION['game']['round_image']['path'] );
+	$file_path = __DIR__ . '/../images/' . basename($_SESSION['game']['round_image']['path']);
 
-	if ( ! file_exists( $file_path ) ) {
-		http_response_code( 404 );
-		trigger_error( 'Impossible de trouver le fichier image', E_ERROR );
+	if (! file_exists($file_path)) {
+		http_response_code(404);
+		trigger_error('Impossible de trouver le fichier image', E_USER_ERROR);
 		exit;
 	}
 
-	$ext  = strtolower( pathinfo( $file_path, PATHINFO_EXTENSION ) );
-	$mime = match ( $ext ) {
+	$extension  = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+	//Définit le bon mime-type (pour le header HTTP)
+	$mime = match ($extension) {
 		'jpg', 'jpeg' => 'image/jpeg',
 		'png'         => 'image/png',
 		'webp'        => 'image/webp',
 		default       => 'application/octet-stream',
 	};
 
-	header( 'Content-Type: ' . $mime );
+	header('Content-Type: ' . $mime);
 	// Ecrit l'image sur la sortie standard, récupéré par le navigateur pour afficher l'image
-	readfile( $file_path );
+	readfile($file_path);
 	exit;
 }
 
-function controller_game_over() {
+/**
+ * Affiche l'écran de fin de partie avec le score final.
+ * GET /game-over
+ */
+function controller_game_over(): void
+{
 
 	// Récupérer le score
 	$score    = $_SESSION['game']['score'];
@@ -163,7 +142,7 @@ function controller_game_over() {
 	// Supprimer sessions
 	session_destroy();
 	// Supprimer le cookie de session
-	if ( ini_get( 'session.use_cookies' ) ) {
+	if (ini_get('session.use_cookies')) {
 		$params = session_get_cookie_params();
 		setcookie(
 			session_name(),    // nom du cookie de session
