@@ -104,9 +104,9 @@ Se rendre à l'URL <http://localhost:8000> avec votre navigateur favori.
 
 ### Améliorer le système
 
-- **Fixer le cas de la navigation vers l'arrière**. Le site *casse* si on utilise le bouton *revenir en arrière* (*Back*) du navigateur. Avec le bouton *Back*, la session *continue* d'aller vers le round suivant ;
-- Mettre en place une véritable **gestion d'erreurs** ;
-- **Refactoriser/restructurer le code**. Le code est volontairement laissé *en l'état*. Essayer de **trouver des abstractions utiles** (fonctions, namespaces, classes si POO, PHP moderne avec Composer, classe *oriented* et *autoloading* etc.) pour *restructurer* le code.
+- **Fixer la navigation**. Le site casse dès que l'on *rafraîchit* la ressource */round*. Par exemple, si on utilise le bouton *Revenir en arrière* (*Back*) du navigateur la session *continue* d'aller au round suivant, des GET répétées sur même `/round` fait avancer le jeu et l'image, etc. (GET doit être [idempotente](https://fr.wikipedia.org/wiki/Idempotence) !) ;
+- Mettre en place une **gestion d'erreurs** ;
+- **Refactoriser/restructurer le code**. Le code est volontairement laissé *en l'état*. Essayer de **trouver des abstractions utiles** (fonctions, namespaces, classes si POO, etc.) pour *restructurer* le code.
 
 ### Fait
 
