@@ -15,6 +15,8 @@ require __DIR__ . '/../src/database.php';
 require __DIR__ . '/../src/view.php';
 // Module contenant les règles/spécifications du jeu
 require __DIR__ . '/../src/timeguessr.php';
+/*Les Contrôleurs de l'application, executés par le routeur*/
+require __DIR__ . '/../src/controller.php';
 
 //Configuration des cookies
 session_set_cookie_params(

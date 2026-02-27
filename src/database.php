@@ -47,7 +47,7 @@ load_env(__DIR__ . '/../.env');
  *
  * @return PDO
  */
-function getPDO(): PDO
+function db_connect(): PDO
 {
 	static $pdo = null;
 
@@ -90,5 +90,5 @@ function find_five_random_images(): array
         LIMIT 5
     ";
 
-	return getPDO()->query($sql)->fetchAll();
+	return db_connect()->query($sql)->fetchAll();
 }
