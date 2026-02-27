@@ -6,7 +6,7 @@
 
 ?>
 
-<?php require 'parts/header.php'; ?>
+<?php require __DIR__ . '/parts/header.php'; ?>
 
 <h1>TimeGuessr</h1>
 
@@ -14,4 +14,4 @@
     <input type="submit" name="new_game" value="Nouvelle partie">
 </form>
 
-<?php require 'parts/footer.php'; ?>
+<?php require  __DIR__ .'/parts/footer.php'; ?>

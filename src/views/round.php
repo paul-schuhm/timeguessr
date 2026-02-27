@@ -6,7 +6,7 @@
 
 ?>
 
-<?php require 'parts/header.php'; ?>
+<?php require __DIR__ . '/parts/header.php'; ?>
 
 <h1>Round <?php echo $args['current_round'] ?></h1>
 
@@ -29,4 +29,4 @@
     <input type="submit" value="Proposer">
 </form>
 
-<?php require 'parts/footer.php'; ?>
+<?php require __DIR__ . '/parts/footer.php'; ?>

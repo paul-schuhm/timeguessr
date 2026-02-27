@@ -14,7 +14,6 @@
 function render_template(string $name, array $args = array()): string
 {
     ob_start();
-    // Path Relatif au script appelant (le fichier controller.php ici)
     require __DIR__ . "/views/{$name}";
     return ob_get_clean();
 }

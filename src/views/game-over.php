@@ -6,7 +6,7 @@
 
 ?>
 
-<?php require 'parts/header.php'; ?>
+<?php require __DIR__ . '/parts/header.php'; ?>
 
 <h1>Score</h1>
 <h2><?php echo $args['score']; ?> / 50 000</h2>
@@ -14,4 +14,4 @@
     <a href="/new-game">Rejouer</a>
 </p>
 
-<?php require 'parts/footer.php'; ?>
+<?php require  __DIR__ .'/parts/footer.php'; ?>

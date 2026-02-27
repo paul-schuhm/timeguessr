@@ -5,7 +5,7 @@
  */
 
 /*Les Contrôleurs de l'application, executés par le routeur*/
-require_once __DIR__ . '/../src/controller.php';
+require_once __DIR__ . '/controller.php';
 
 /**
  * Routes de l'application

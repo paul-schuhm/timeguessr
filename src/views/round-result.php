@@ -1,4 +1,4 @@
-<?php require 'parts/header.php'; ?>
+<?php require __DIR__ . '/parts/header.php'; ?>
 
 <h2>Score round : <?php echo $args['round_score']; ?></h2>
 <p>
@@ -9,4 +9,4 @@
     <?php endif; ?>
 </p>
 
-<?php require 'parts/footer.php'; ?>
+<?php require  __DIR__ .'/parts/footer.php'; ?>
