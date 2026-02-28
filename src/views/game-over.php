@@ -10,10 +10,12 @@
 
 <h1>Score</h1>
 <h2><?php echo $args['score']; ?> / 50 000</h2>
+<h2>Détail de la partie</h2>
+<!-- Afficher l'historique de la partie proprement -->
 <ul>
     <?php foreach ($args['history'] as $round => $data) : ?>
         <li>
-            <img src="" alt="">
+            <img src="<?php echo "round-image?id=$round"; ?>" alt="" width="200">
             <p><?php echo $round; ?></p>
             <p><?php echo $data['year']; ?></p>
         </li>

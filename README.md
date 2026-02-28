@@ -104,13 +104,15 @@ Se rendre à l'URL <http://localhost:8000> avec votre navigateur favori.
 
 ### Améliorer le système
 
-- **Fixer la navigation**. Le site casse dès que l'on *rafraîchit* la ressource */round*. Par exemple, si on utilise le bouton *Revenir en arrière* (*Back*) du navigateur la session *continue* d'aller au round suivant, des GET répétées sur même `/round` fait avancer le jeu et l'image, etc. (GET doit être [idempotente](https://fr.wikipedia.org/wiki/Idempotence) !) ;
 - Mettre en place une **gestion d'erreurs** ;
+- Intégration CSS propre et agréable ;
+- Ajouter la carte interactive pour proposer l'emplacement géographique (longitude et latitude) ;
 - **Refactoriser/restructurer le code**. Le code est volontairement laissé *en l'état*. Essayer de **trouver des abstractions utiles** (fonctions, namespaces, classes si POO, etc.) pour *restructurer* le code.
 
 ### Fait
 
 - **Ne pas donner accès à toutes les images**. Pour le moment les images sont dans le répertoire `public`. Elles sont facilement accessibles par les clients avant de commencer une partie. Elles devraient uniquement être accessibles à chaque round. Pour cela, il faut créer un contrôleur en charge de fournir une image liée à un round sur une URL *custom* (par ex. fournir `GET round/image?step=1`) [x]
+- *Avancé* : **Fixer la navigation**. Le site casse dès que l'on *rafraîchit* la ressource */round*. Par exemple, si on utilise le bouton *Revenir en arrière* (*Back*) du navigateur la session *continue* d'aller au round suivant, des GET répétées sur même `/round` fait avancer le jeu et l'image, etc. (`GET` doit être **sûre et [idempotente](https://fr.wikipedia.org/wiki/Idempotence)** !). Pour cela, [utiliser le pattern PRG](https://fr.wikipedia.org/wiki/Post-redirect-get) ; [x]
 
 ## Références
 

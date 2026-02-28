@@ -159,6 +159,12 @@ function controller_next_round(): void
  */
 function controller_show_end_game(): void
 {
+
+	//Tentative d'accéder au game-over avant d'avoir terminer la partie.
+	if (!isset($_SESSION['game']['history'][5])) {
+		//A implementer... Rediriger vers la prochaine manche à jouer
+	}
+
 	// Afficher page de fin de jeu (score final)
 	display_template(
 		'game-over.php',
