@@ -10,7 +10,7 @@
 
 <h1>TimeGuessr</h1>
 
-<form action="/new-game" method="get">
+<form action="/new-game" method="POST">
     <input type="submit" name="new_game" value="Nouvelle partie">
 </form>
 

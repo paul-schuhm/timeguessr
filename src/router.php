@@ -8,17 +8,18 @@
  * Routes de l'application
  */
 define('ROUTES', [
-    'POST' => [
-        '/round' => 'controller_play_round',
-        '/round-result' => 'controller_show_round_result',
-    ],
     'GET' => [
         '/' => 'controller_show_home',
-        '/new-game' => 'controller_new_game',
-        '/round' => 'controller_play_round',
+        '/round' => 'controller_show_round',
+        '/round-result' => 'controller_show_round_result',
         '/round-image' => 'controller_round_image',
-        '/game-over' => 'controller_end_game',
-    ]
+        '/game-over' => 'controller_show_end_game',
+    ],
+    'POST' => [
+        '/new-game' => 'controller_new_game',
+        '/make-guess' => 'controller_make_guess',
+        '/next-round' =>  'controller_next_round',
+    ],
 ]);
 
 $parts = parse_url($_SERVER['REQUEST_URI']);
